@@ -14,30 +14,39 @@
 const arrayObjectPegawai = require("./data-customer.json");
 
 function lakukanLooping(arrPegawai) {
-  // ! JANGAN DIMODIFIKASI
-  let dataYangAkanDilooping = arrPegawai;
+    // ! JANGAN DIMODIFIKASI
+    let dataYangAkanDilooping = arrPegawai;
 
-  /*
+    /*
     TODO 1: Buatlah sebuah variabel bernama "hasilLooping" 
       yang berisi gabungan nama depan dan belakang dari masing masing pegawai
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
 
-  /*
+    let hasilLooping = [];
+    dataYangAkanDilooping.forEach((e) => {
+        hasilLooping.push(`${e.namaDepan} ${e.namaBelakang}`);
+    });
+
+    /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
       yang berisi jumlah pria dari masing masing pegawai
   */
-  let jumlahPria = null;
+    let jumlahPria = 0;
+    dataYangAkanDilooping.forEach((e) => {
+        e.jenisKelamin == "M" ? jumlahPria++ : "";
+    });
 
-  /*
+    /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
       yang berisi jumlah wanita dari masing masing pegawai
   */
-  let jumlahWanita = null;
-
-  /*
+    let jumlahWanita = 0;
+    dataYangAkanDilooping.forEach((e) => {
+        e.jenisKelamin == "F" ? jumlahWanita++ : "";
+    });
+    /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
       yang akan mengomentari apakah lebih banyak Pria atau Wanita
       
@@ -48,25 +57,32 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
-
-  // ! JANGAN DIMODIFIKASI
-  return {
-    hasilLooping,
-    jumlahPria,
-    jumlahWanita,
-    komentar,
-  };
+    let komentar = null;
+    if (jumlahPria > jumlahWanita) {
+        komentar = "Jumlah Pria lebih banyak dari Wanita";
+    } else if (jumlahPria < jumlahWanita) {
+        komentar = "Jumlah Wanita lebih banyak dari Pria";
+    } else {
+        komentar = "Jumlah Pria dan Wanita berimbang";
+    }
+    // ! JANGAN DIMODIFIKASI
+    return {
+        hasilLooping,
+        jumlahPria,
+        jumlahWanita,
+        komentar,
+    };
 }
 
 function main(data) {
-  const hasil = lakukanLooping(data || arrayObjectPegawai);
+    const hasil = lakukanLooping(data || arrayObjectPegawai);
 
-  console.log(hasil.hasilLooping);
-  console.log(hasil.jumlahPria);
-  console.log(hasil.jumlahWanita);
+    console.log(hasil.hasilLooping);
+    console.log(hasil.jumlahPria);
+    console.log(hasil.jumlahWanita);
+    console.log(hasil.komentar);
 
-  return hasil;
+    return hasil;
 }
 
 main(arrayObjectPegawai);
